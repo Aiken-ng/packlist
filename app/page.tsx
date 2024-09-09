@@ -20,7 +20,7 @@ export default function App() {
             const suggestionBox = document.getElementById('suggestions');
             // Clear previous suggestions
             suggestionBox.innerHTML = '';
-            if (input) {
+            if (!input) {
                 // Filter suggestions based on user input
                 const filteredSuggestions = suggestionsArray.filter(item => 
                     item.toLowerCase().startsWith(input)
