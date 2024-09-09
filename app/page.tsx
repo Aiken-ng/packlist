@@ -16,7 +16,33 @@ const client = generateClient<Schema>();
 export default function App() {
   const suggestionsArray = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape", "Honeydew"];
    const showSuggestions = (e: React.KeyboardEvent) => {
-        alert("Keydown");
+        const input = document.getElementById('textInput').value.toLowerCase();
+            const suggestionBox = document.getElementById('suggestions');
+            // Clear previous suggestions
+            suggestionBox.innerHTML = '';
+            if (input) {
+                // Filter suggestions based on user input
+                const filteredSuggestions = suggestionsArray.filter(item => 
+                    item.toLowerCase().startsWith(input)
+                );
+
+                if (filteredSuggestions.length > 0) {
+                    suggestionBox.style.display = 'block';
+                    filteredSuggestions.forEach(suggestion => {
+                        const suggestionDiv = document.createElement('div');
+                        suggestionDiv.textContent = suggestion;
+                        suggestionDiv.onclick = function() {
+                            document.getElementById('textInput').value = suggestion;
+                            suggestionBox.style.display = 'none';
+                        };
+                        suggestionBox.appendChild(suggestionDiv);
+                    });
+                } else {
+                    suggestionBox.style.display = 'none';
+                }
+            } else {
+                suggestionBox.style.display = 'none';
+            }
     };
   
   return(
@@ -26,7 +52,7 @@ export default function App() {
           <li><Link href="/changeoutlook"><a>Reassemble</a></Link></li>
         </ul>
         <div>
-           <input type="text" onKeyUp={showSuggestions} placeholder="Start typing..."/>
+           <input id="textInput" type="text" onKeyUp={showSuggestions} placeholder="Start typing..."/>
         </div>
       </main>
   );
