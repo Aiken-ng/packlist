@@ -13,55 +13,65 @@ Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
 
-const TypingEffect: React.FC<{ text: string; speed?: number }> = ({ text, speed = 100 }) => {
-  const [displayedText, setDisplayedText] = useState('');
-
-  useEffect(() => {
-    let index = 0;
-    const intervalId = setInterval(() => {
-      if (index < text.length-1)  {
-        console.log(text[index])
-        console.log(index)
-        setDisplayedText(prev => prev + text[index]);
-        index += 1;
-      } else {
-        clearInterval(intervalId);
-      }
-    }, speed);
-
-    return () => clearInterval(intervalId);
-  }, [text, speed]);
-
-  return (
-    <div style={{
-      fontFamily: 'Courier New, Courier, monospace',
-      fontSize: '20px',
-      borderRight: '3px solid #000',
-      whiteSpace: 'pre-wrap', // Ensure text wraps
-      overflowWrap: 'break-word', // Handle long words
-      maxWidth: '100%', // Ensure it fits within its container
-      animation: 'blink-caret 0.75s step-end infinite',
-    }}>
-      {displayedText}
-      <style>{`
-        @keyframes blink-caret {
-          from, to { border-color: transparent; }
-          50% { border-color: black; }
-        }
-      `}</style>
-    </div>
-  );
-};
-
 export default function App() {
+  const suggestionsArray = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape", "Honeydew"];
+   const showSuggestions = (e: React.KeyboardEvent) => {
+        alert("Keydown");
+    };
+  
   return(
       <main>
         <ul>
         <li><Link href="/"><a>Home</a></Link></li>
-{/*         <li><Link href="/puzzle3"><a>Puzzle 3</a></Link></li>
-        <li><Link href="/puzzle3_clue"><a>Puzzle 3 hint 1</a></Link></li>
+        <li><Link href="/changeoutlook"><a>Reassemble</a></Link></li>
+{/*         <li><Link href="/puzzle3_clue"><a>Puzzle 3 hint 1</a></Link></li>
         <li><Link href="/puzzle3_clue2"><a>Puzzle 3 hint 2</a></Link></li> */}
         </ul>
+        <div>
+           <input type="text" onkeyup={showSuggestions} placeholder="Start typing...">
+        </div>
       </main>
   );
 }
+
+
+
+
+{/* ////////
+<h2>Type a word to see suggestions:</h2>
+    <input type="text" id="textInput" onkeyup="showSuggestions()" placeholder="Start typing..." autocomplete="off">
+    <div id="suggestions"></div>
+
+    <script>
+        const suggestionsArray = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape", "Honeydew"];
+
+        function showSuggestions() {
+            const input = document.getElementById('textInput').value.toLowerCase();
+            const suggestionBox = document.getElementById('suggestions');
+
+            // Clear previous suggestions
+            suggestionBox.innerHTML = '';
+            if (input) {
+                // Filter suggestions based on user input
+                const filteredSuggestions = suggestionsArray.filter(item => 
+                    item.toLowerCase().startsWith(input)
+                );
+
+                if (filteredSuggestions.length > 0) {
+                    suggestionBox.style.display = 'block';
+                    filteredSuggestions.forEach(suggestion => {
+                        const suggestionDiv = document.createElement('div');
+                        suggestionDiv.textContent = suggestion;
+                        suggestionDiv.onclick = function() {
+                            document.getElementById('textInput').value = suggestion;
+                            suggestionBox.style.display = 'none';
+                        };
+                        suggestionBox.appendChild(suggestionDiv);
+                    });
+                } else {
+                    suggestionBox.style.display = 'none';
+                }
+            } else {
+                suggestionBox.style.display = 'none';
+            }
+        } */}
