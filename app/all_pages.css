@@ -1,0 +1,35 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(2,3,129);
+}
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 11px;
+  text-decoration: underline;
+  font-weight:bold;
+  font-size: 70%
+}
+
+div a{
+    text-decoration: none;
+    color: black;
+}
+.highlight::selection {
+  text-decoration: none;
+  background-color: yellow;
+}
+body {
+    margin: 0px;
+    color: black;
+}
+div {
+  margin:10px;
+}
