@@ -58,9 +58,9 @@ export default function App() {
       <main>
         <ul>
         <li><Link href="/"><a>Home</a></Link></li>
-        <li><Link href="/puzzle3"><a>Puzzle 3</a></Link></li>
+{/*         <li><Link href="/puzzle3"><a>Puzzle 3</a></Link></li>
         <li><Link href="/puzzle3_clue"><a>Puzzle 3 hint 1</a></Link></li>
-        <li><Link href="/puzzle3_clue2"><a>Puzzle 3 hint 2</a></Link></li>
+        <li><Link href="/puzzle3_clue2"><a>Puzzle 3 hint 2</a></Link></li> */}
         </ul>
       <div style={{ width: '300px' }}> {/* Set a container width if needed */}
       <div>∧,,,∧<br />(  ̳• · • ̳)<br />/    づ♡</div>
