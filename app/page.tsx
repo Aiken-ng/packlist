@@ -22,13 +22,11 @@ export default function App() {
   return(
       <main>
         <ul>
-        <li><Link href="/"><a>Home</a></Link></li>
-        <li><Link href="/changeoutlook"><a>Reassemble</a></Link></li>
-{/*         <li><Link href="/puzzle3_clue"><a>Puzzle 3 hint 1</a></Link></li>
-        <li><Link href="/puzzle3_clue2"><a>Puzzle 3 hint 2</a></Link></li> */}
+          <li><Link href="/"><a>Home</a></Link></li>
+          <li><Link href="/changeoutlook"><a>Reassemble</a></Link></li>
         </ul>
         <div>
-           <input type="text" onkeyup={showSuggestions} placeholder="Start typing...">
+           <input type="text" onkeyup={showSuggestions} placeholder="Start typing..."/>
         </div>
       </main>
   );
