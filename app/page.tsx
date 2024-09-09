@@ -26,7 +26,7 @@ export default function App() {
           <li><Link href="/changeoutlook"><a>Reassemble</a></Link></li>
         </ul>
         <div>
-           <input type="text" onkeyup={showSuggestions} placeholder="Start typing..."/>
+           <input type="text" onKeyUp={showSuggestions} placeholder="Start typing..."/>
         </div>
       </main>
   );
