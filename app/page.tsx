@@ -14,7 +14,17 @@ Amplify.configure(outputs);
 const client = generateClient<Schema>();
 
 export default function App() {
-  const suggestionsArray = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape", "Honeydew"];
+  const dictionary: { [key: string]: number } = {
+    Handphone: 4,
+    Wallet: 4,
+    Galaxy_FE_earbuds: 4,
+    Bible: 3,
+    Blue_Water_bottle: 3,
+    Black_White_water_bottle: 4
+  };
+  const entries = Object.entries(dictionary) as [string, number][];
+  entries.sort(([, valueA], [, valueB]) => valueA - valueB);
+  const suggestionsArray = entries.map(([key]) => key.replace(/_/g, ' '));
    const showSuggestions = (e: React.KeyboardEvent) => {
         const input = document.getElementById('textInput') as HTMLInputElement;
             const suggestionBox = document.getElementById('suggestions');
@@ -43,7 +53,6 @@ export default function App() {
                 }
             }
     };
-  
   return(
       <main>
         <ul>
