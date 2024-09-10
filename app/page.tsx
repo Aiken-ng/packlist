@@ -16,32 +16,31 @@ const client = generateClient<Schema>();
 export default function App() {
   const suggestionsArray = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape", "Honeydew"];
    const showSuggestions = (e: React.KeyboardEvent) => {
-        const input = document.getElementById('textInput').value.toLowerCase();
+        const input = document.getElementById('textInput') as HTMLInputElement;
             const suggestionBox = document.getElementById('suggestions');
-            // Clear previous suggestions
-            suggestionBox.innerHTML = '';
-            if (input != null) {
-                // Filter suggestions based on user input
-                const filteredSuggestions = suggestionsArray.filter(item => 
-                    item.toLowerCase().startsWith(input)
-                );
-
-                if (filteredSuggestions.length > 0) {
-                    suggestionBox.style.display = 'block';
-                    filteredSuggestions.forEach(suggestion => {
-                        const suggestionDiv = document.createElement('div');
-                        suggestionDiv.textContent = suggestion;
-                        suggestionDiv.onclick = function() {
-                            document.getElementById('textInput').value = suggestion;
-                            suggestionBox.style.display = 'none';
-                        };
-                        suggestionBox.appendChild(suggestionDiv);
-                    });
+            if (suggestionBox !== null){
+                suggestionBox.innerHTML = '';
+                if (input !== null) {
+                    const filteredSuggestions = suggestionsArray.filter(item => 
+                        item.toLowerCase().startsWith(input.value.toLowerCase())
+                    );
+                    if (filteredSuggestions.length > 0) {
+                        suggestionBox.style.display = 'block';
+                        filteredSuggestions.forEach(suggestion => {
+                            const suggestionDiv = document.createElement('div');
+                            suggestionDiv.textContent = suggestion;
+                            suggestionDiv.onclick = function() {
+                                input.value = suggestion;
+                                suggestionBox.style.display = 'none';
+                            };
+                            suggestionBox.appendChild(suggestionDiv);
+                        });
+                    } else {
+                        suggestionBox.style.display = 'none';
+                    }
                 } else {
                     suggestionBox.style.display = 'none';
                 }
-            } else {
-                suggestionBox.style.display = 'none';
             }
     };
   
@@ -54,48 +53,7 @@ export default function App() {
         <div>
            <input id="textInput" type="text" onKeyUp={showSuggestions} placeholder="Start typing..."/>
         </div>
+        <div id="suggestions"></div>
       </main>
   );
 }
-
-
-
-
-{/* ////////
-<h2>Type a word to see suggestions:</h2>
-    <input type="text" id="textInput" onkeyup="showSuggestions()" placeholder="Start typing..." autocomplete="off">
-    <div id="suggestions"></div>
-
-    <script>
-        const suggestionsArray = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape", "Honeydew"];
-
-        function showSuggestions() {
-            const input = document.getElementById('textInput').value.toLowerCase();
-            const suggestionBox = document.getElementById('suggestions');
-
-            // Clear previous suggestions
-            suggestionBox.innerHTML = '';
-            if (input) {
-                // Filter suggestions based on user input
-                const filteredSuggestions = suggestionsArray.filter(item => 
-                    item.toLowerCase().startsWith(input)
-                );
-
-                if (filteredSuggestions.length > 0) {
-                    suggestionBox.style.display = 'block';
-                    filteredSuggestions.forEach(suggestion => {
-                        const suggestionDiv = document.createElement('div');
-                        suggestionDiv.textContent = suggestion;
-                        suggestionDiv.onclick = function() {
-                            document.getElementById('textInput').value = suggestion;
-                            suggestionBox.style.display = 'none';
-                        };
-                        suggestionBox.appendChild(suggestionDiv);
-                    });
-                } else {
-                    suggestionBox.style.display = 'none';
-                }
-            } else {
-                suggestionBox.style.display = 'none';
-            }
-        } */}
