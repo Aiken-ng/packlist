@@ -19,8 +19,8 @@ export default function App() {
     Wallet: 4,
     Galaxy_FE_earbuds: 4,
     Bible: 3,
-    Blue_Water_bottle: 3,
-    Black_White_water_bottle: 4
+    Blue_Water_bottle: 1,
+    Black_White_water_bottle: 2
   };
   const entries = Object.entries(dictionary) as [string, number][];
   entries.sort(([, valueA], [, valueB]) => valueA - valueB);
