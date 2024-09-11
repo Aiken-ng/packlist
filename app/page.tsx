@@ -68,3 +68,5 @@ export default function App() {
       </main>
   );
 }
+//^^^^ Need to add a button to the submission to clear the text and also add the element to the editing page (have a group button for the suggestions)
+// Once the editing page receives the thing, it requires confirmation that it is added. Then add it to the site cookies. (have a cancel button for the editing)
