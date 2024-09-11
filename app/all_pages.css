@@ -31,5 +31,11 @@ body {
     color: black;
 }
 div {
+  width:100%;
+  height: auto;
   margin:10px;
+}
+
+input {
+  width:100%;
 }
