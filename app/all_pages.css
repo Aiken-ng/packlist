@@ -8,6 +8,11 @@ ul {
 li {
   float: left;
 }
+/* change the nav bar only have 3 tabs:
+- The adding items page
+- Groupings page
+- Checking for items page */
+
 li a {
   display: block;
   color: white;
