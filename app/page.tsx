@@ -15,12 +15,12 @@ const client = generateClient<Schema>();
 
 export default function App() {
   const dictionary: { [key: string]: number } = {
-    Handphone: 4,
-    Wallet: 4,
-    Galaxy_FE_earbuds: 4,
-    Bible: 3,
-    Blue_Water_bottle: 1,
-    Black_White_water_bottle: 2
+    Handphone: 1,
+    Wallet: 1,
+    Galaxy_FE_earbuds: 1,
+    Bible: 2,
+    Blue_Water_bottle: 3,
+    Black_White_water_bottle: 3
   };
   const entries = Object.entries(dictionary) as [string, number][];
   entries.sort(([, valueA], [, valueB]) => valueA - valueB);
