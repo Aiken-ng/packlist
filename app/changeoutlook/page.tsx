@@ -12,7 +12,8 @@ import Link from "next/link"
 Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
-
+// Require to show the browser cookies of the website of which item is stored on the database.
+// check off the items that are with you before leaving
 export default function App() {
   return(
       <main>
