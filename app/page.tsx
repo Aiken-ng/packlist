@@ -14,7 +14,8 @@ Amplify.configure(outputs);
 const client = generateClient<Schema>();
 
 export default function App() {
-    
+
+   const [inputValue, setInputValue] = useState('');
    const showSuggestions = (e: React.KeyboardEvent) => {
        const dictionary: { [key: string]: number } = {
             Handphone: 1,
@@ -55,6 +56,13 @@ export default function App() {
                 }
             }
     };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log('Form Submitted:', inputValue);
+        
+        // Add your form submission logic here (e.g., API call)
+    };
   return(
       <main>
         <ul>
@@ -62,9 +70,13 @@ export default function App() {
           <li><Link href="/changeoutlook"><a>Reassemble</a></Link></li>
         </ul>
         <div>
-           <input id="textInput" type="text" onKeyUp={showSuggestions} placeholder="Start typing..."/>
+            <form onSubmit={SubmitItem}>
+              <input id="textInput" type="text" onKeyUp={showSuggestions} placeholder="Start typing..." value={inputValue}/>
+              <button type="submit">Submit</button>
+            </form>
         </div>
         <div id="suggestions"></div>
+        <div id="addedItems"></div>
       </main>
   );
 }
