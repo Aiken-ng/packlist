@@ -57,7 +57,7 @@ export default function App() {
             }
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const SubmitItem = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Form Submitted:', inputValue);
         
